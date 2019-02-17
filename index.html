@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<link rel='stylesheet' type='text/css' href='/tictactoe.css'/>		
+	</head>
+	<body>
+
+		<div id='game'>
+		</div>
+    <div id='message'></div>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+					integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+				  crossorigin="anonymous"></script>
+
+  <script src='TicTacToe.js'></script>
+  <script src='InitView.js'></script>
+  <script src='RefreshView.js'></script>
+
+  <script>
+
+    $(function() {
+      const game = new TicTacToe(4);
+      InitView(game);
+      $('#game').on('click', function(evt) {        
+        const row = $(evt.target).attr('row');
+        const col = $(evt.target).attr('col');
+        game.mark(row, col, 'X');
+        RefreshView(game);
+        game.AiPlay();
+        RefreshView(game);
+      });
+    });    
+
+  </script>
+
+	</body>
+</html>
+
+
+
+
+
